@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<style>
+#myProgress {
+  position: relative;
+  width: 30px;
+  height: 200px;
+  background-color: #ddd;
+}
+#myBar {
+  position: absolute;
+  bottom:0;
+  width: 30px;
+  height: 0px;
+  background-color: #4CAF50;
+}
+</style>
+<body>
+
+<h1>Abiadura eman</h1>
+
+<div id="myProgress">
+  <div id="myBar">0%</div>
+</div>
+
+<br>
+
+
+<script>
+
+var i = 0;
+var height = 0;
+
+window.addEventListener("keyup", stop);
+window.addEventListener("keydown", move);
+
+var requestAnimationFrame = window.requestAnimationFrame;
+var cancelAnimationFrame = window.cancelAnimationFrame;
+var myReq;
+
+  function move() {
+   if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    myReq = requestAnimationFrame(frame);
+   
+    function frame() {
+      myReq = requestAnimationFrame(frame);
+            if (height >= 100) {
+                window.cancelAnimationFrame(myReq);
+                i=0;
+            } 
+            else {
+                
+                height++;
+                i++;
+                elem.style.height = height + '%';
+                altuera=height;
+                elem.innerHTML = height  + "%";
+                return height;
+            } 
+    }
+  }
+}
+
+
+  function stop(height){
+    var elem = document.getElementById("myBar");
+    elem.style.height = height + '%';
+    window.cancelAnimationFrame(myReq);
+}
+
+</script>
+
+</body>
+</html>
