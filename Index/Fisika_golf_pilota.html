@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Golf Jokoa </title>
+
+</head>
+<body>
+
+<div id="contenedor">
+    <canvas id="myCanvas" height="700" width="1400">
+   
+    </canvas>
+    <script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var ballRadius = 10;
+
+    var y0 = 450;
+    var x0 = 50;
+
+    var egoera = 0;
+
+    var angelua_y = 0.5;
+    var angelua_x = 0.5;
+    var v= 84;
+
+    var t= 0;
+    var y = 0;
+    var x = 0;
+
+     var blerro=14;
+     var bzutabe=28;
+     var bHeight=50;
+     var bWidth=50;
+
+     var belarra={};
+
+    document.addEventListener("mousedown", potentzia, false);
+
+     function matrizeOsoa(){
+
+          for(c=0; c<bzutabe; c++){
+                belarra[c]={};
+                for(r=0; r<blerro; r++){
+                    belarra[c][r]={x:0, y:0, status:1};
+                }
+          }
+    drawzerua();
+    drawpista();
+    drawlurra();
+    drawBandera();
+    drawHodeiak();
+    drawBall();
+        }
+  function drawBandera(){
+   
+    ctx.beginPath();
+     ctx.strokeStyle = "black";
+    ctx.lineWidth=3;
+    ctx.moveTo(1350,450);
+    ctx.lineTo(1350,240);
+    ctx.stroke();
+
+    ctx.beginPath();
+     ctx.strokeStyle = "black";
+    ctx.lineWidth=2;
+    ctx.moveTo(1330,450);
+    ctx.lineTo(1330,500);
+    ctx.stroke();
+
+    ctx.beginPath();
+     ctx.strokeStyle = "black";
+    ctx.arc(1350,500,20,0,Math.PI);
+    ctx.stroke();
+
+    ctx.beginPath();
+     ctx.strokeStyle = "black";
+    ctx.lineWidth=2;
+    ctx.moveTo(1370,500);
+    ctx.lineTo(1370,450);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.strokeStyle = "red";
+    ctx.lineWidth=3;
+    ctx.moveTo(1350,240);
+    ctx.lineTo(1350,200);
+    ctx.stroke();
+}
+function drawHodeiak(){
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(150,100,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(200,100,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(250,100,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(300,100,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(650,200,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(700,200,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(750,200,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(800,200,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+
+     ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(1150,100,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+     ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(1200,100,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+     ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(1250,100,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+
+     ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.arc(1300,100,50,0,2*Math.PI);
+    ctx.stroke();
+    ctx.fillStyle="white";
+    ctx.fill();
+}
+        
+   
+    function drawzerua(){
+                for(c=0;c<bzutabe; c++){
+                    for(r=0;r<9; r++){
+                        if(belarra[c][r].status==1){
+                            var bX= (c*(bWidth ));
+                            var bY= (r*(bHeight));
+                            belarra[c][r].x=0;
+                            belarra[c][r].y=0;
+                            ctx.beginPath();
+                            ctx.rect(bX, bY, bWidth, bHeight);
+                            ctx.fillStyle= '#C4DFE6';
+                            ctx.fill();
+                            ctx.closePath();
+                        }
+                    }
+                }
+            }
+     function drawpista(){
+                for(c=0;c<bzutabe; c++){
+                    for(r=9;r<11; r++){
+                        if(belarra[c][r].status==1){
+                            var bX= (c*(bWidth ));
+                            var bY= (r*(bHeight));
+                            belarra[c][r].x=0;
+                            belarra[c][r].y=0;
+                            ctx.beginPath();
+                            ctx.rect(bX, bY, bWidth, bHeight);
+                            ctx.fillStyle= '#0F5E03';
+                            ctx.fill();
+                            ctx.closePath();
+                        }
+                    }
+                }
+            }
+    function drawlurra(){
+                for(c=0;c<bzutabe; c++){
+                    for(r=11;r<14; r++){
+                        if(belarra[c][r].status==1){
+                            var bX= (c*(bWidth ));
+                            var bY= (r*(bHeight));
+                            belarra[c][r].x=0;
+                            belarra[c][r].y=0;
+                            ctx.beginPath();
+                            ctx.rect(bX, bY, bWidth, bHeight);
+                            ctx.fillStyle= '#7D4427';
+                            ctx.fill();
+                            ctx.closePath();
+                        }
+                    }
+                }
+            }
+
+
+    function potentzia()
+    {
+      egoera=1;
+    }
+
+    function drawBall() {
+       
+        ctx.beginPath();
+        ctx.arc(x, y, ballRadius, 0, 2*Math.PI);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.closePath();
+
+    }
+    
+    function denbora(){
+      t= t+0.25;
+    }
+
+    function update(){
+      y = y0-v*angelua_y*t+4.9*t*t;
+      x = x0 +v* angelua_x*t;
+    }
+
+    function talkaAldeak(){
+        if(x > canvas.width - ballRadius-15 || x < ballRadius) 
+        {
+
+          y0 = y;
+          x0 = x;
+          t = 0.5;
+          v = v * 0.5;
+          angelua_x = -angelua_x;
+          
+           if (v<3) {
+             egoera = 1;
+           }
+        }
+
+        if(y > 450 ) {
+          y0 = y;
+          x0= x;
+          t = 0.5;
+          v = v * 0.85;
+           if (v<3) {
+             egoera = 1;
+           }
+        }
+        if(y < 0 ) {
+          y0 = y;
+          x0= x;
+          t = 0.5;
+          v = v * 0.15;
+          angelua_y = -angelua_y;
+           if (v<3) {
+             egoera = 1;
+           }
+        }
+
+        if (x> canvas.width-ballRadius) {
+
+          y0 = y;
+          x0= x;
+          t = 0.5;
+          v = v * 0.5;
+          angelua_x = -angelua_x;
+           if (v<3) {
+             egoera = 1;
+           }
+        }
+    }
+
+    function draw() {
+   
+        if (egoera == 0) {
+          update();
+          matrizeOsoa();
+          denbora();
+        talkaAldeak();
+        }
+        
+    }
+
+    setInterval(draw, 25);
+
+
+
+    </script>
+</div>
+</body>
+</html>
